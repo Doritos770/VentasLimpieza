@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "VentasLimpieza.Core/1.0.0": {
+        "runtime": {
+          "VentasLimpieza.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VentasLimpieza.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
