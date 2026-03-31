@@ -8,7 +8,7 @@ using VentasLimpieza.Infrastructure.Data;
 
 namespace VentasLimpieza.Infrastructure.Repositories
 {
-    public class CategoriaRepository : ICategoriaRepository
+    public class CategoriaRepository// : ICategoriaRepository
     {
         public readonly VentasLimpiezaContext _categoria;
 

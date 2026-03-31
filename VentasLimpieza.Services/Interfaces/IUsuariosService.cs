@@ -12,10 +12,10 @@ namespace VentasLimpieza.Services.Interfaces
         Task<IEnumerable<Usuario>> GetAllUsersAsync();//a todos
         Task<Usuario> GetUsuarioByIdAsync(int id);//con id
         Task RegistrarUsuario(Usuario usuario);
-       
         Task UpdateUsuario(Usuario usuario);
         Task DeleteUsuario(int id);
-        //Task<Usuario> GetByEmail(string email);
+        Task ActualizarContraseña(Usuario usuario);
+        //Task<Usuario> GetUsuarioByEmail(string email);
         //Task<bool> EmailExists(string email);
     }
 }

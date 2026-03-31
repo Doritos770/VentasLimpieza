@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using VentasLimpieza.Api.Responses;
 using VentasLimpieza.core.Dtos;
 using VentasLimpieza.core.Entities;
-using VentasLimpieza.core.Interfaces;
 using VentasLimpieza.Services.Interfaces;
-using VentasLimpieza.Services.Services;
+using VentasLimpieza.Services.Validators;
 
 namespace VentasLimpieza.Api.Controllers
 {
@@ -12,19 +12,24 @@ namespace VentasLimpieza.Api.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IUsuarioService _usuarioServices;
         private readonly IMapper _mapper;
-        public UsuarioController(IUsuarioRepository usuarioRepository, IMapper mapper)
+        private readonly UsuarioDtoValidator _usuarioDtoValidator;
+        public UsuarioController(
+             IUsuarioService usuarioServices,
+             IMapper mapper,
+             UsuarioDtoValidator usuarioDtoValidator)
         {
-            _usuarioRepository = usuarioRepository;
+            _usuarioServices = usuarioServices;
             _mapper = mapper;
+            _usuarioDtoValidator = usuarioDtoValidator;
         }
 
         #region sin dtos
         [HttpGet]
         public async Task<IActionResult> GetUsuario()
         {
-            var usuarios = await _usuarioRepository.GetUsuariosAsync();
+            var usuarios = await _usuarioServices.GetAllUsersAsync();
             return Ok(usuarios);
 
         }
@@ -32,36 +37,37 @@ namespace VentasLimpieza.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUsuarioById(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             return Ok(usuario);
         }
 
         [HttpPost]
         public async Task<IActionResult> InsertUsuario(Usuario usuario)
         {
-            await _usuarioRepository.InsertUsuario(usuario);
+            await _usuarioServices.RegistrarUsuario(usuario);
             return Created($"api/usuario/{usuario.Id}", usuario);
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateUsuario(Usuario usuario)
         {
-            await _usuarioRepository.UpdateUsuario(usuario);
+            await _usuarioServices.UpdateUsuario(usuario);
             return NoContent();
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteUsuario(Usuario usuario)
         {
-            await _usuarioRepository.DeleteUsuario(usuario);
+            await _usuarioServices.DeleteUsuario(usuario.Id);
             return NoContent();
         }
         #endregion
+
         #region conDtos
         [HttpGet("dto")]
         public async Task<IActionResult> GetDtoUsuario()
         {
-            var usuarios = await _usuarioRepository.GetUsuariosAsync();
+            var usuarios = await _usuarioServices.GetAllUsersAsync();
             var usuariosDto = usuarios.Select(u => new UsuarioDto
             {
                 Id = u.Id,
@@ -79,7 +85,7 @@ namespace VentasLimpieza.Api.Controllers
         [HttpGet("dto/{id}")]
         public async Task<IActionResult> GetDtoUsuarioById(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             var usuarioDto = new UsuarioDto
             {
                 Id = usuario.Id,
@@ -108,7 +114,7 @@ namespace VentasLimpieza.Api.Controllers
                 FechaRegistro = usuarioDto.FechaRegistro,
                 IsActive = usuarioDto.IsActive
             };
-            await _usuarioRepository.InsertUsuario(usuario);
+            await _usuarioServices.RegistrarUsuario(usuario);
             return Created($"api/usuario/{usuario.Id}", usuario);
         }
 
@@ -118,7 +124,7 @@ namespace VentasLimpieza.Api.Controllers
             if (id != usuarioDto.Id)
                 return BadRequest("El ID del usuario no coincide");
 
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             if (usuario == null)
                 return NotFound("Usuario no encontrado");
 
@@ -131,18 +137,18 @@ namespace VentasLimpieza.Api.Controllers
             usuario.FechaRegistro = usuarioDto.FechaRegistro;
             usuario.IsActive = usuarioDto.IsActive;
 
-            await _usuarioRepository.UpdateUsuario(usuario);
+            await _usuarioServices.UpdateUsuario(usuario);
             return NoContent();
         }
 
         [HttpDelete("dto/{id}")]
         public async Task<IActionResult> DeleteDtoUsuario(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             if (usuario == null)
                 return NotFound("Usuario no encontrado");
 
-            await _usuarioRepository.DeleteUsuario(usuario);
+            await _usuarioServices.DeleteUsuario(usuario.Id);
             return NoContent();
         }
         #endregion
@@ -151,26 +157,59 @@ namespace VentasLimpieza.Api.Controllers
         [HttpGet("dto/mapper")]
         public async Task<IActionResult> GetDtoMapperUsuario()
         {
-            var usuarios = await _usuarioRepository.GetUsuariosAsync();
+            var usuarios = await _usuarioServices.GetAllUsersAsync();
             var usuariosDto = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
-            return Ok(usuariosDto);
+
+            var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDto);
+            return Ok(response);
         }
 
         [HttpGet("dto/mapper/{id}")]
         public async Task<IActionResult> GetDtoMapperUsuarioById(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
-            var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
-            return Ok(usuarioDto);
-        }
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
+            if (usuario == null)
+                return NotFound(new { mensaje = "Usuario no encontrado" });
 
+            var usuarioDto = _mapper.Map<UsuarioDto>(usuario);
+            var response = new ApiResponse<UsuarioDto>(usuarioDto);
+            return Ok(response);
+        }
 
         [HttpPost("dto/mapper")]
         public async Task<IActionResult> InsertDtoMapperUsuario(UsuarioDto usuarioDto)
         {
-            var usuario = _mapper.Map<Usuario>(usuarioDto);
-            await _usuarioRepository.InsertUsuario(usuario);
-            return Created($"api/usuario/{usuario.Id}", usuario);
+            // Validar el DTO
+            var validationResult = await _usuarioDtoValidator.ValidateAsync(usuarioDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(new
+                {
+                    message = "Error de validación",
+                    errors = validationResult.Errors.Select(e => new
+                    {
+                        field = e.PropertyName,
+                        error = e.ErrorMessage
+                    })
+                });
+            }
+
+            try
+            {
+                var usuario = _mapper.Map<Usuario>(usuarioDto);
+                await _usuarioServices.RegistrarUsuario(usuario);
+
+                var response = new ApiResponse<UsuarioDto>(usuarioDto);
+                return Created($"api/usuario/{usuario.Id}", response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Error al registrar el usuario",
+                    error = ex.Message
+                });
+            }
         }
 
         [HttpPut("dto/mapper/{id}")]
@@ -179,42 +218,78 @@ namespace VentasLimpieza.Api.Controllers
             if (id != usuarioDto.Id)
                 return BadRequest("El ID del usuario no coincide");
 
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            // Validar el DTO
+            var validationResult = await _usuarioDtoValidator.ValidateAsync(usuarioDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(new
+                {
+                    message = "Error de validación",
+                    errors = validationResult.Errors.Select(e => new
+                    {
+                        field = e.PropertyName,
+                        error = e.ErrorMessage
+                    })
+                });
+            }
+
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             if (usuario == null)
                 return NotFound("Usuario no encontrado");
 
-            // Mapear valores del DTO a la entidad existente
-            _mapper.Map(usuarioDto, usuario);
+            try
+            {
+                _mapper.Map(usuarioDto, usuario);
+                await _usuarioServices.UpdateUsuario(usuario);
 
-            await _usuarioRepository.UpdateUsuario(usuario);
-            return NoContent();
+                var response = new ApiResponse<UsuarioDto>(usuarioDto);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = "Error al actualizar el usuario",
+                    error = ex.Message
+                });
+            }
         }
 
         [HttpDelete("dto/mapper/{id}")]
         public async Task<IActionResult> DeleteDtoMapperUsuario(int id)
         {
-            var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
+            var usuario = await _usuarioServices.GetUsuarioByIdAsync(id);
             if (usuario == null)
                 return NotFound("Usuario no encontrado");
 
-            await _usuarioRepository.DeleteUsuario(usuario);
+            await _usuarioServices.DeleteUsuario(usuario.Id);
             return NoContent();
         }
         #endregion
 
-        [HttpPost("registrar")]
-        public async Task<IActionResult> Registrar([FromBody] UsuarioDto usuarioDto)
+        #region Cambiar Contraseña
+        [HttpPut("cambiar-contrasena")]
+        public async Task<IActionResult> CambiarContraseña([FromBody] UsuarioDto usuarioDto)
         {
             try
             {
                 var usuario = _mapper.Map<Usuario>(usuarioDto);
-                await _usuarioService.RegistrarUsuario(usuario); //aca es por dependencia pero me tontie jodido aaaaaaaaaaaaa
-                return Ok(new { success = true, message = "Usuario registrado exitosamente" });
+                await _usuarioServices.ActualizarContraseña(usuario);
+                return Ok(new
+                {
+                    success = true,
+                    message = "Contraseña actualizada exitosamente"
+                });
             }
             catch (Exception ex)
             {
-                return BadRequest(new { success = false, error = ex.Message });
+                return BadRequest(new
+                {
+                    success = false,
+                    error = ex.Message
+                });
             }
         }
+        #endregion
     }
 }

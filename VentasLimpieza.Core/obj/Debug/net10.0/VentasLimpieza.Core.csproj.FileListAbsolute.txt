@@ -22,3 +22,15 @@ F:\UNIVERSIDAD\5TO SEMESTRE\TECNOLOGIAS WEB 1\proyecto tecno\ProductosLimpieza\V
 F:\UNIVERSIDAD\5TO SEMESTRE\TECNOLOGIAS WEB 1\proyecto tecno\ProductosLimpieza\VentasLimpieza\VentasLimpieza.Core\obj\Debug\net10.0\refint\VentasLimpieza.Core.dll
 F:\UNIVERSIDAD\5TO SEMESTRE\TECNOLOGIAS WEB 1\proyecto tecno\ProductosLimpieza\VentasLimpieza\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.pdb
 F:\UNIVERSIDAD\5TO SEMESTRE\TECNOLOGIAS WEB 1\proyecto tecno\ProductosLimpieza\VentasLimpieza\VentasLimpieza.Core\obj\Debug\net10.0\ref\VentasLimpieza.Core.dll
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\bin\Debug\net10.0\VentasLimpieza.Core.deps.json
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\bin\Debug\net10.0\VentasLimpieza.Core.dll
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\bin\Debug\net10.0\VentasLimpieza.Core.pdb
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.AssemblyInfoInputs.cache
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.AssemblyInfo.cs
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.csproj.CoreCompileInputs.cache
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.sourcelink.json
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.dll
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\refint\VentasLimpieza.Core.dll
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\VentasLimpieza.Core.pdb
+C:\Users\doria\OneDrive\Escritorio\ejemplo tec web\AvanceTecWeb\VentasLimpieza.Core\obj\Debug\net10.0\ref\VentasLimpieza.Core.dll

@@ -12,6 +12,7 @@
     <Compile Remove="Interfaces\IPedidoRepository.cs" />
     <Compile Remove="Interfaces\IProductoRepository.cs" />
     <Compile Remove="Interfaces\IReseñaRepository.cs" />
+    <Compile Remove="Interfaces\IUsuarioRepository.cs" />
   </ItemGroup>
 
 </Project>

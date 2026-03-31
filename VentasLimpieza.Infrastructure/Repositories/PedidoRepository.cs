@@ -8,7 +8,7 @@ using VentasLimpieza.Infrastructure.Data;
 
 namespace VentasLimpieza.Infrastructure.Repositories
 {
-    public class PedidoRepository : IPedidoRepository
+    public class PedidoRepository //: IPedidoRepository
     {
         public readonly VentasLimpiezaContext _pedido;
 

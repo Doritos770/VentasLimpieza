@@ -8,6 +8,12 @@
 
   <ItemGroup>
     <Compile Remove="Data\VentasLimpiezaContexta.cs" />
+    <Compile Remove="Repositories\CategoriaRepository.cs" />
+    <Compile Remove="Repositories\DireccionRepository.cs" />
+    <Compile Remove="Repositories\PedidoRepository.cs" />
+    <Compile Remove="Repositories\ProductoRepository.cs" />
+    <Compile Remove="Repositories\ReseñaRepository.cs" />
+    <Compile Remove="Repositories\UsuarioRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>

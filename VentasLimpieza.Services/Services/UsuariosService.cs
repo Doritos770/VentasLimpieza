@@ -9,11 +9,10 @@ namespace VentasLimpieza.Services.Services
     public class UsuariosService : IUsuarioService
     {
         public readonly IBaseRepository<Usuario> _usuarioRepository;
-        public readonly RegistrarUsuarioValidator _usuarioValidator;
+
         public UsuariosService(IBaseRepository<Usuario> usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
-            _usuarioValidator = new RegistrarUsuarioValidator(_usuarioRepository);
         }
 
         public async Task<IEnumerable<Usuario>> GetAllUsersAsync()
@@ -29,7 +28,7 @@ namespace VentasLimpieza.Services.Services
 
         public async Task RegistrarUsuario(Usuario usuario)
         {
-            await _usuarioValidator.EmailYaExistente(usuario.Email);
+            await GetUsuarioByEmail(usuario.Email);
             var user = await _usuarioRepository.GetById(usuario.Id);
             
 
@@ -44,6 +43,53 @@ namespace VentasLimpieza.Services.Services
 
             await _usuarioRepository.Add(usuario);
         }
+        public async Task ActualizarContraseña(Usuario usuario)
+        {
+
+            var usuarioExistente = await ValidarUsuarioExiste(usuario.Id);
+
+
+            if (!CompararCampos(usuarioExistente, usuario))
+                throw new Exception("Los datos de validación no coinciden");
+
+
+            usuarioExistente.Password = usuario.Password;
+            await _usuarioRepository.Update(usuarioExistente);
+        }
+
+
+
+
+        //funciones auxiliares----------------------------------------------------------------------------
+        private async Task GetUsuarioByEmail(string email)
+        {
+            var usuarios = await _usuarioRepository.GetAll();
+            var existe = usuarios.Any(usuario => usuario.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+            if (existe == true)
+            {
+                throw new Exception("Esta cuenta ya fue registrada con este email");
+            }
+        }
+
+
+        private async Task<Usuario> ValidarUsuarioExiste(int id)
+        {
+            var usuario = await GetUsuarioByIdAsync(id);
+
+            if (usuario == null)
+                throw new Exception("Usuario no encontrado");
+
+            return usuario;
+        }
+
+        private bool CompararCampos(Usuario existente, Usuario nuevo)
+        {
+            return existente.Nombre == nuevo.Nombre &&
+                   existente.Apellido == nuevo.Apellido &&
+                   existente.Email == nuevo.Email &&
+                   existente.Telefono == nuevo.Telefono;
+        }
+
 
         private bool ContainsFobbidenWord(string text)
         {

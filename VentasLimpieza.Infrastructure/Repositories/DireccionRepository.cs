@@ -8,7 +8,7 @@ using VentasLimpieza.Infrastructure.Data;
 
 namespace VentasLimpieza.Infrastructure.Repositories;
 
-public class DireccionRepository : IDireccionRepository
+public class DireccionRepository //: IDireccionRepository
 {
     public readonly VentasLimpiezaContext _direccion;
 

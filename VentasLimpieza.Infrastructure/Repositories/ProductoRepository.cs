@@ -8,7 +8,7 @@ using VentasLimpieza.Infrastructure.Data;
 
 namespace VentasLimpieza.Infrastructure.Repositories
 {
-    public class ProductoRepository : IProductoRepository
+    public class ProductoRepository //: IProductoRepository
     {
         public readonly VentasLimpiezaContext _productos;
 
