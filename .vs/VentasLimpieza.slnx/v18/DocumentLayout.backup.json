@@ -1,10 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\",
+  "WorkspaceRootPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6BB215D5-D33D-D426-E1BA-C9B13FBD0511}|VentasLimpieza.Api\\VentasLimpieza.Api.csproj|c:\\users\\doria\\onedrive\\escritorio\\ejemplo tec web\\avancetecweb\\ventaslimpieza.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F9AF5B10-0E4E-42F3-815B-BE1977E00083}|VentasLimpieza.Services\\VentasLimpieza.Services.csproj|c:\\users\\doria\\onedrive\\escritorio\\avancetecweb\\ventaslimpieza.services\\services\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9AF5B10-0E4E-42F3-815B-BE1977E00083}|VentasLimpieza.Services\\VentasLimpieza.Services.csproj|solutionrelative:ventaslimpieza.services\\services\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E61A7FC-F7E2-DB6C-814E-3D2F1A986D1C}|VentasLimpieza.Core\\VentasLimpieza.Core.csproj|c:\\users\\doria\\onedrive\\escritorio\\avancetecweb\\ventaslimpieza.core\\entidadesaux\\cambiocontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E61A7FC-F7E2-DB6C-814E-3D2F1A986D1C}|VentasLimpieza.Core\\VentasLimpieza.Core.csproj|solutionrelative:ventaslimpieza.core\\entidadesaux\\cambiocontrase\u00F1a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6BB215D5-D33D-D426-E1BA-C9B13FBD0511}|VentasLimpieza.Api\\VentasLimpieza.Api.csproj|c:\\users\\doria\\onedrive\\escritorio\\avancetecweb\\ventaslimpieza.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6BB215D5-D33D-D426-E1BA-C9B13FBD0511}|VentasLimpieza.Api\\VentasLimpieza.Api.csproj|solutionrelative:ventaslimpieza.api\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9AF5B10-0E4E-42F3-815B-BE1977E00083}|VentasLimpieza.Services\\VentasLimpieza.Services.csproj|c:\\users\\doria\\onedrive\\escritorio\\avancetecweb\\ventaslimpieza.services\\interfaces\\iusuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9AF5B10-0E4E-42F3-815B-BE1977E00083}|VentasLimpieza.Services\\VentasLimpieza.Services.csproj|solutionrelative:ventaslimpieza.services\\interfaces\\iusuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,17 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUsuariosService.cs",
+              "DocumentMoniker": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Services\\Interfaces\\IUsuariosService.cs",
+              "RelativeDocumentMoniker": "VentasLimpieza.Services\\Interfaces\\IUsuariosService.cs",
+              "ToolTip": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Services\\Interfaces\\IUsuariosService.cs",
+              "RelativeToolTip": "VentasLimpieza.Services\\Interfaces\\IUsuariosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T21:37:33.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "UsuariosService.cs",
+              "DocumentMoniker": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Services\\Services\\UsuariosService.cs",
+              "RelativeDocumentMoniker": "VentasLimpieza.Services\\Services\\UsuariosService.cs",
+              "ToolTip": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Services\\Services\\UsuariosService.cs",
+              "RelativeToolTip": "VentasLimpieza.Services\\Services\\UsuariosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T21:34:22.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CambioContrase\u00F1a.cs",
+              "DocumentMoniker": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\EntidadesAux\\CambioContrase\u00F1a.cs",
+              "RelativeDocumentMoniker": "VentasLimpieza.Core\\EntidadesAux\\CambioContrase\u00F1a.cs",
+              "ToolTip": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\EntidadesAux\\CambioContrase\u00F1a.cs",
+              "RelativeToolTip": "VentasLimpieza.Core\\EntidadesAux\\CambioContrase\u00F1a.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAzwBcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T21:33:28.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UsuarioController.cs",
-              "DocumentMoniker": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
-              "ToolTip": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
               "RelativeToolTip": "VentasLimpieza.Api\\Controllers\\UsuarioController.cs",
-              "ViewState": "AgIAAP0AAAAAAAAAAAAiwAABAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8BAAAAAAAAAAAiwBYBAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-30T13:40:33.267Z",
               "EditorCaption": ""

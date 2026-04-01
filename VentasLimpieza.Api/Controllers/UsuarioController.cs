@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using VentasLimpieza.Api.Responses;
 using VentasLimpieza.core.Dtos;
 using VentasLimpieza.core.Entities;
+using VentasLimpieza.Core.EntidadesAux;
 using VentasLimpieza.Services.Interfaces;
 using VentasLimpieza.Services.Validators;
 
@@ -161,7 +162,7 @@ namespace VentasLimpieza.Api.Controllers
             var usuariosDto = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
 
             var response = new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDto);
-            return Ok(response);
+            return Ok(usuariosDto);
         }
 
         [HttpGet("dto/mapper/{id}")]
@@ -218,7 +219,7 @@ namespace VentasLimpieza.Api.Controllers
             if (id != usuarioDto.Id)
                 return BadRequest("El ID del usuario no coincide");
 
-            // Validar el DTO
+            
             var validationResult = await _usuarioDtoValidator.ValidateAsync(usuarioDto);
             if (!validationResult.IsValid)
             {
@@ -267,14 +268,37 @@ namespace VentasLimpieza.Api.Controllers
         }
         #endregion
 
-        #region Cambiar Contraseña
-        [HttpPut("cambiar-contrasena")]
-        public async Task<IActionResult> CambiarContraseña([FromBody] UsuarioDto usuarioDto)
+        #region Recuperación de Contraseña
+
+        
+        [HttpPost("recuperar/solicitar")]
+        public async Task<IActionResult> SolicitarCodigo([FromBody] SolicitarRecuperacionDto request)
         {
             try
             {
-                var usuario = _mapper.Map<Usuario>(usuarioDto);
-                await _usuarioServices.ActualizarContraseña(usuario);
+                var resultado = await _usuarioServices.SolicitarCodigoRecuperacion(
+                    request.Email,
+                    request.Telefono);
+
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, error = ex.Message });
+            }
+        }
+
+        // Paso 2: Verificar código y cambiar contraseña
+        [HttpPost("recuperar/verificar")]
+        public async Task<IActionResult> VerificarCodigo([FromBody] VerificarCodigoDto request)
+        {
+            try
+            {
+                await _usuarioServices.VerificarCodigoYCambiarContraseña(
+                    request.Email,
+                    request.Codigo,
+                    request.NuevaContraseña);
+
                 return Ok(new
                 {
                     success = true,
@@ -283,13 +307,10 @@ namespace VentasLimpieza.Api.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new
-                {
-                    success = false,
-                    error = ex.Message
-                });
+                return BadRequest(new { success = false, error = ex.Message });
             }
         }
+
         #endregion
     }
 }

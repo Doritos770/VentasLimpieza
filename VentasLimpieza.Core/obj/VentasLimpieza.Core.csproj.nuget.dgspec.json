@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj": {}
+    "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj": {
+    "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj",
+        "projectUniqueName": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj",
         "projectName": "VentasLimpieza.Core",
-        "projectPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj",
+        "projectPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\VentasLimpieza.Core.csproj",
         "packagesPath": "C:\\Users\\doria\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Core\\obj\\",
+        "outputPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

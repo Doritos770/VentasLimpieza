@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZA/raGTDZgY=",
+  "dgSpecHash": "TpUra7BZElo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
+  "projectFilePath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\doria\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\doria\\.nuget\\packages\\fluentvalidation\\11.12.0\\fluentvalidation.11.12.0.nupkg.sha512",
@@ -46,9 +46,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "El paquete \"AutoMapper\" 13.0.1 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
-      "projectPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
+      "projectPath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\doria\\OneDrive\\Escritorio\\ejemplo tec web\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
+      "filePath": "C:\\Users\\doria\\OneDrive\\Escritorio\\AvanceTecWeb\\VentasLimpieza.Api\\VentasLimpieza.Api.csproj",
       "libraryId": "AutoMapper",
       "targetGraphs": [
         "net10.0"
